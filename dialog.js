@@ -52,11 +52,20 @@ util.inherits(Dialog, EventEmitter);
  * Implemented from https://github.com/timkinnane/hubot-rocketchat-announcement/blob/master/src/rocketchat-announcement.coffee#L46-L54
  */
 Dialog.prototype._stripBotName = function (text) {
+<<<<<<< HEAD
+=======
+  var nameStart = text.charAt(0) === '@' ? 1 : 0;
+  var nameStrip = text;
+>>>>>>> answer-hold-params
 
   var match = text.match(new RegExp("^(@?(?:"+ this.robot.name + "|" + this.robot.alias + "|hubot):?)?(.*)", "i"));
   return match[2].trim();
 };
 
+<<<<<<< HEAD
+=======
+  var len = nameStrip ? nameStart + nameStrip.length : 0;
+>>>>>>> answer-hold-params
 
 Dialog.prototype.updateAnswers = function (message, key, value) {
   var currAnswer = {
@@ -125,7 +134,15 @@ Dialog.prototype._invokeDialog = function (message, done) {
     question += ' ' + skipMessage;
   }
 
+<<<<<<< HEAD
   self.msg.sendDirect(question);
+=======
+  function updateAnswers(key, value) {
+    var currAnswer = message;
+    currAnswer.response = {
+      type: message.answer.type
+    };
+>>>>>>> answer-hold-params
 
   self.addSkip(message, done);
   self.addAbort(done);
