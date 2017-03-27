@@ -1,11 +1,15 @@
 {
   "name": "hubot-dynamic-conversation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Have conversation with user without the hustle of `robot.hear`",
   "main": "index.js",
+  "publishConfig" : {
+   "registry" : "https://nexus.tekstack.ca/repository/npm-hosted/"
+  },
   "contributors": [
     "Gary Chapman <gary.chapman@4thparty.com.au>",
-    "Tim Kinnane <tim.kinnane@4thparty.com.au>"
+    "Tim Kinnane <tim.kinnane@4thparty.com.au>",
+    "Eduardo Aleixo <eduardo@translucentcomputing.com>"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
