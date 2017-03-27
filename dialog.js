@@ -36,14 +36,14 @@ util.inherits(Dialog, EventEmitter);
  */
 Dialog.prototype._stripBotName = function (text) {
   var nameStart = text.charAt(0) === '@' ? 1 : 0;
-  var nameStrip;
+  var nameStrip = text;
 
   if (text.indexOf(this.robot.name) === nameStart) nameStrip = this.robot.name;
   else if (text.indexOf(this.robot.alias) === nameStart) nameStrip = this.robot.alias;
   else if (text.indexOf('Hubot') === nameStart) nameStrip = 'Hubot';
   else if (text.indexOf('hubot') === nameStart) nameStrip = 'hubot';
 
-  var len = !!nameStrip ? nameStart + nameStrip.length : 0;
+  var len = nameStrip ? nameStart + nameStrip.length : 0;
 
   // handle situations where someone answers a question with the bot name, which could legitimately happen
   if (text.length == nameStrip.length)
@@ -80,11 +80,9 @@ Dialog.prototype._invokeDialog = function (message, done) {
   }
 
   function updateAnswers(key, value) {
-    var currAnswer = {
-      question: message.question,
-      response: {
-        type: message.answer.type
-      }
+    var currAnswer = message;
+    currAnswer.response = {
+      type: message.answer.type
     };
 
     currAnswer.response[key] = value;
